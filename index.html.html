@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahan Ajar BK SMP: Bijak Bermain Game Online - Ibu Nurani, S.Pd.</title>
+    <!-- Memuat Tailwind CSS untuk tata letak responsif dan modern -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Google Fonts: Plus Jakarta Sans untuk keterbacaan modern yang ramah remaja -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        tealSoft: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            900: '#134e4a',
+                        },
+                        indigoCalm: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Pengaturan khusus tampilan cetak (Print / Simpan ke PDF) */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #1e293b !important;
+                font-size: 10.5pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-break-inside-avoid {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+            .print-bg-light {
+                background: #f8fafc !important;
+                color: #0f172a !important;
+            }
+            input {
+                border: none !important;
+                border-bottom: 1px solid #64748b !important;
+                border-radius: 0 !important;
+                padding-left: 0 !important;
+                background: transparent !important;
+            }
+            button {
+                display: none !important;
+            }
+        }
+
+        /* Animasi halus untuk transisi kartu dan sorotan soal kosong */
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+        }
+        @keyframes pulseBorder {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+        }
+        .unanswered-highlight {
+            border-color: #f59e0b !important;
+            background-color: #fffbeb !important;
+            animation: pulseBorder 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-teal-200 selection:text-teal-900">
+
+    <!-- Navigasi Atas Mengambang (Sticky Navbar) -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm no-print">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-slate-800 text-sm sm:text-base block leading-tight">Bimbingan Klasikal BK</span>
+                        <span class="text-xs text-slate-500 font-medium">Modul Peserta Didik SMP</span>
+                    </div>
+                </div>
+
+                <!-- Menu Tautan Cepat Desktop (5 Bagian + Kuis) -->
+                <div class="hidden lg:flex items-center space-x-3.5 text-xs font-semibold text-slate-600">
+                    <a href="#bagian1" class="hover:text-indigo-600 transition">1. Daya Tarik</a>
+                    <a href="#bagian2" class="hover:text-teal-600 transition">2. Sisi Positif</a>
+                    <a href="#bagian3" class="hover:text-rose-600 transition">3. Dampak Negatif</a>
+                    <a href="#bagian4" class="hover:text-indigo-600 transition">4. Self-Check</a>
+                    <a href="#bagian5" class="hover:text-teal-600 transition">5. 5 Jurus</a>
+                    <a href="#kuis" class="px-3.5 py-1.5 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-sm">Latihan Soal</a>
+                </div>
+
+                <!-- Tombol Cetak / PDF -->
+                <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs sm:text-sm font-semibold shadow-sm transition cursor-pointer" title="Cetak Modul atau Simpan sebagai PDF">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                    </svg>
+                    <span>Cetak / PDF</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Kontainer Utama Bahan Ajar -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
+
+        <!-- 1. HEADER / SAMPUL MODUL -->
+        <header class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-teal-800 to-teal-700 text-white p-7 sm:p-10 shadow-xl print-bg-light print-shadow-none">
+            <!-- Dekorasi Latar Belakang Abstrak -->
+            <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-teal-400/20 blur-2xl no-print"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-indigo-400/25 blur-2xl no-print"></div>
+
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-5 print-bg-light">
+                    <svg class="w-4 h-4 text-teal-200 print:text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                    <span>Bimbingan Klasikal • Bidang Pribadi & Sosial</span>
+                </div>
+
+                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+                    Bijak Bermain Game Online: <br class="hidden sm:inline">
+                    <span class="text-teal-200 print:text-teal-700">Kenali Dampak, Kendalikan Diri</span>
+                </h1>
+
+                <p class="text-teal-50/90 text-sm sm:text-base max-w-2xl leading-relaxed mb-8 print:text-slate-700">
+                    Bahan ajar interaktif untuk membekali peserta didik SMP dengan pemahaman psikologis tentang game online, kesadaran akan risiko kecanduan, serta keterampilan mengelola diri secara sehat.
+                </p>
+
+                <!-- Kartu Identitas Penyusun & Sasaran -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/15 mb-6 print-bg-light">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-teal-500/30 flex items-center justify-center text-teal-100 shrink-0 print:bg-teal-100 print:text-teal-800">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-teal-200 uppercase font-semibold tracking-wider print:text-slate-500">Identitas Penyusun</p>
+                            <p class="font-bold text-base sm:text-lg">Nurani, S.Pd.</p>
+                            <p class="text-xs text-teal-100/90 print:text-slate-600">Guru Bimbingan dan Konseling</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-indigo-500/30 flex items-center justify-center text-indigo-100 shrink-0 print:bg-indigo-100 print:text-indigo-800">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-teal-200 uppercase font-semibold tracking-wider print:text-slate-500">Sasaran Layanan</p>
+                            <p class="font-bold text-base sm:text-lg">Peserta Didik Jenjang SMP</p>
+                            <p class="text-xs text-teal-100/90 print:text-slate-600">Kelas VII, VIII, dan IX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kotak Tujuan Layanan -->
+                <div class="bg-slate-900/35 rounded-2xl p-5 border border-white/10 print-bg-light">
+                    <h2 class="text-sm font-bold uppercase tracking-wider text-teal-200 mb-3 flex items-center gap-2 print:text-teal-800">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Tujuan Layanan Bimbingan:
+                    </h2>
+                    <ul class="space-y-2.5 text-sm text-teal-50/95 print:text-slate-700">
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-teal-500/40 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 print:bg-teal-600">1</span>
+                            <span>Peserta didik mampu menjelaskan faktor psikologis yang membuat game online menarik serta mengidentifikasi manfaat positifnya jika dimainkan secara proporsional.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-teal-500/40 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 print:bg-teal-600">2</span>
+                            <span>Peserta didik mampu mengevaluasi kebiasaan bermain game pribadi melalui indikator refleksi diri serta menganalisis dampak negatif kecanduan game pada 4 aspek kehidupan.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-teal-500/40 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 print:bg-teal-600">3</span>
+                            <span>Peserta didik mampu merancang dan menerapkan strategi kendali diri (manajemen waktu, prioritas tugas, dan komunikasi asertif) dalam aktivitas digital sehari-hari.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- BAGIAN 1: MENGAPA REMAJA SUKA GAME ONLINE? -->
+        <section id="bagian1" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 print-shadow-none print-break-inside-avoid">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-800 font-bold text-xs uppercase tracking-wider">Bagian 01</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800">Mengapa Remaja Suka Game Online?</h2>
+            </div>
+
+            <p class="text-slate-600 leading-relaxed mb-6">
+                Pernahkah kamu bertanya-tanya mengapa bermain game terasa begitu seru hingga waktu berlalu sangat cepat? Secara ilmiah dan psikologis, <em>game online</em> memang dirancang untuk memenuhi tiga kebutuhan dasar otak remaja:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Poin 1: Stimulasi Dopamin -->
+                <div class="p-5 rounded-2xl bg-indigo-50/70 border border-indigo-100 card-hover">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-600 text-white flex items-center justify-center mb-3.5 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-indigo-950 text-base mb-2">1. Stimulasi Hormon Dopamin</h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Setiap kali kamu mendapatkan poin, membuka peti hadiah, atau mengalahkan lawan, otak melepaskan <strong>dopamin</strong>—zat kimia pembawa rasa senang dan puas secara instan.
+                    </p>
+                </div>
+
+                <!-- Poin 2: Rasa Pencapaian -->
+                <div class="p-5 rounded-2xl bg-indigo-50/70 border border-indigo-100 card-hover">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-600 text-white flex items-center justify-center mb-3.5 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-indigo-950 text-base mb-2">2. Rasa Pencapaian (Achievement)</h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Sistem kenaikan level, <em>rank</em>, dan gelar membuat remaja merasa kompeten, tertantang, dan diakui kemampuannya dengan aturan yang jelas.
+                    </p>
+                </div>
+
+                <!-- Poin 3: Kebutuhan Interaksi Sosial -->
+                <div class="p-5 rounded-2xl bg-indigo-50/70 border border-indigo-100 card-hover">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-600 text-white flex items-center justify-center mb-3.5 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-indigo-950 text-base mb-2">3. Kebutuhan Interaksi Sosial</h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Pada usia SMP, penerimaan teman sebaya sangat penting. Fitur <em>mabar</em> (main bareng) dan <em>voice chat</em> menjadi sarana bercanda dan merasa terhubung dengan kelompok.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: SISI POSITIF JIKA PROPORSIONAL -->
+        <section id="bagian2" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 print-shadow-none print-break-inside-avoid">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider">Bagian 02</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800">Sisi Positif Jika Dimainkan Proporsional</h2>
+            </div>
+
+            <p class="text-slate-600 leading-relaxed mb-6">
+                Dalam Bimbingan dan Konseling, game online dipandang netral seperti pisau bermata dua. Apabila dimainkan dalam batas waktu wajar setelah kewajiban utama selesai, game memberikan empat manfaat positif:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-teal-50/70 border border-teal-100">
+                    <div class="w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-teal-950 text-base">Melatih Strategi & Pemecahan Masalah</h3>
+                        <p class="text-sm text-slate-700 mt-1 leading-relaxed">Game teka-teki maupun strategi melatih otak menganalisis situasi dan mengambil keputusan cepat di bawah tekanan.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-teal-50/70 border border-teal-100">
+                    <div class="w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-teal-950 text-base">Koordinasi Mata dan Tangan</h3>
+                        <p class="text-sm text-slate-700 mt-1 leading-relaxed">Meningkatkan ketelitian visual, kecepatan refleks motorik halus, dan fokus perhatian pada detail layar.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-teal-50/70 border border-teal-100">
+                    <div class="w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-teal-950 text-base">Kerja Sama Tim (Teamwork)</h3>
+                        <p class="text-sm text-slate-700 mt-1 leading-relaxed">Mengajarkan pembagian peran, komunikasi positif antaranggota tim, serta sportivitas dalam menerima kemenangan maupun kekalahan.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-teal-50/70 border border-teal-100">
+                    <div class="w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-teal-950 text-base">Rekreasi Pelepas Penat</h3>
+                        <p class="text-sm text-slate-700 mt-1 leading-relaxed">Menjadi sarana penyegaran pikiran (<em>refreshing</em>) yang sehat di akhir pekan setelah seminggu penuh mengikuti kegiatan belajar di sekolah.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 3: DAMPAK NEGATIF KECANDUAN GAME ONLINE (4 KARTU VISUAL) -->
+        <section id="bagian3" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 print-shadow-none">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-rose-100 text-rose-800 font-bold text-xs uppercase tracking-wider">Bagian 03</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800">Dampak Negatif Kecanduan Game Online</h2>
+            </div>
+
+            <p class="text-slate-600 leading-relaxed mb-6">
+                Sebaliknya, ketika bermain game dilakukan secara berlebihan hingga mengabaikan batas waktu, empat aspek utama kehidupan remaja akan terdampak secara langsung:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Kartu 1: Dampak Fisik & Kesehatan -->
+                <div class="p-5 rounded-2xl border border-rose-200/80 bg-rose-50/40 card-hover print-break-inside-avoid">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg">1. Dampak Fisik & Kesehatan</h3>
+                    </div>
+                    <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                        <li><strong>Kelelahan Mata:</strong> Mata kering, perih, tegang, hingga risiko meningkatnya mata minus.</li>
+                        <li><strong>Gangguan Pola Tidur:</strong> Begadang merusak ritme sirkadian dan menurunkan imunitas tubuh.</li>
+                        <li><strong>Nyeri Otot & Sendi:</strong> Leher kaku (<em>text neck</em>), pegal punggung, serta kram jari akibat menatap layar berjam-jam.</li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 2: Dampak Akademik & Prestasi -->
+                <div class="p-5 rounded-2xl border border-amber-200/80 bg-amber-50/40 card-hover print-break-inside-avoid">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg">2. Dampak Akademik & Prestasi</h3>
+                    </div>
+                    <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                        <li><strong>Sulit Berkonsentrasi:</strong> Mengantuk saat jam pelajaran berlangsung dan pikiran tertuju pada permainan.</li>
+                        <li><strong>Menunda Tugas (Prokrastinasi):</strong> PR dan belajar persiapan ulangan terabaikan demi menyelesaikan misi harian game.</li>
+                        <li><strong>Penurunan Nilai Rapor:</strong> Prestasi belajar merosot drastis dibandingkan potensi sebenarnya.</li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 3: Dampak Sosial & Keluarga -->
+                <div class="p-5 rounded-2xl border border-indigo-200/80 bg-indigo-50/40 card-hover print-break-inside-avoid">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg">3. Dampak Sosial & Keluarga</h3>
+                    </div>
+                    <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                        <li><strong>Menarik Diri (Isolasi Sosial):</strong> Lebih betah mengurung diri di kamar daripada berinteraksi dengan keluarga.</li>
+                        <li><strong>Konflik dengan Orang Tua:</strong> Sering berdebat soal waktu bermain atau berbohong terkait pengeluaran <em>top-up</em>.</li>
+                        <li><strong>Canggung Berkomunikasi Nyata:</strong> Berkurangnya kepekaan dan keterampilan berbicara tatap muka.</li>
+                    </ul>
+                </div>
+
+                <!-- Kartu 4: Dampak Emosional & Perilaku -->
+                <div class="p-5 rounded-2xl border border-purple-200/80 bg-purple-50/40 card-hover print-break-inside-avoid">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg">4. Dampak Emosional & Perilaku</h3>
+                    </div>
+                    <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                        <li><strong>Emosi Meledak-ledak (Rage):</strong> Mudah marah, membanting barang, atau menyalahkan orang lain saat kalah.</li>
+                        <li><strong>Perilaku Verbal Kasar (Toxic):</strong> Terbiasa melontarkan umpatan yang merusak sopan santun remaja.</li>
+                        <li><strong>Gelisah Saat Jauh dari Gawai:</strong> Cemas dan mudah tersinggung ketika koneksi terputus atau gawai dibatasi.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 4: SELF-CHECK INTERAKTIF "SEBERAPA TERKENDALI KEBIASAAN GAMING-MU?" -->
+        <section id="bagian4" class="bg-gradient-to-br from-indigo-50 via-white to-teal-50 rounded-3xl p-6 sm:p-8 shadow-sm border border-indigo-200/80 print-shadow-none print-break-inside-avoid">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 rounded-lg bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider">Bagian 04 • Self-Check</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800">Seberapa Terkendali Kebiasaan Gaming-mu?</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-600">Basis Kriteria WHO (ICD-11)</span>
+            </div>
+
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                Centanglah pernyataan di bawah ini secara jujur sesuai dengan apa yang kamu alami dalam <strong>3 bulan terakhir</strong>. Sistem akan menghitung skor refleksi dan kategori kendali dirimu secara otomatis:
+            </p>
+
+            <!-- Daftar 6 Indikator Checklist Interaktif -->
+            <div id="selfCheckContainer" class="space-y-3 mb-6">
+                <!-- Dirender oleh JavaScript -->
+            </div>
+
+            <!-- Kalkulator Skor Otomatis & Umpan Balik 3 Kategori -->
+            <div id="selfCheckFeedback" class="rounded-2xl p-5 sm:p-6 bg-white border-2 border-teal-400 shadow-sm transition-all">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-3">
+                    <div class="flex items-center gap-3">
+                        <div id="feedbackIcon" class="w-11 h-11 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span id="feedbackCategoryBadge" class="inline-block text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 mb-1">
+                                Kategori: Aman & Terkendali
+                            </span>
+                            <h4 id="feedbackTitle" class="font-bold text-slate-800 text-base sm:text-lg">
+                                Kendali Dirimu Sangat Baik!
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200 text-center shrink-0">
+                        <span class="block text-xs text-slate-500 font-semibold">Skor Indikator</span>
+                        <span id="selfCheckScoreBadge" class="text-xl font-extrabold text-teal-700">0 / 6</span>
+                    </div>
+                </div>
+                <p id="feedbackDesc" class="text-sm text-slate-600 leading-relaxed">
+                    Kamu mampu menempatkan game sebagai hiburan semata tanpa mengorbankan kesehatan, tugas sekolah, maupun hubungan dengan keluarga. Pertahankan kebiasaan positif ini!
+                </p>
+            </div>
+        </section>
+
+        <!-- BAGIAN 5: 5 JURUS KENDALI DIRI -->
+        <section id="bagian5" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 print-shadow-none print-break-inside-avoid">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider">Bagian 05</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800">5 Jurus Kendali Diri</h2>
+            </div>
+
+            <p class="text-slate-600 leading-relaxed mb-6">
+                Agar kamu tetap menjadi pemegang kendali penuh atas waktumu (bukan dikendalikan oleh game), terapkan <strong>5 Jurus Kendali Diri</strong> berikut ini setiap hari:
+            </p>
+
+            <div class="space-y-4">
+                <!-- Jurus 1 -->
+                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-indigo-600 text-white font-extrabold flex items-center justify-center shrink-0 shadow-sm">1</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Aturan Time-Boxing (Batas Waktu Tegas)</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">Tetapkan alokasi waktu bermain maksimal <strong>60–90 menit per hari</strong> di hari sekolah. Pasang alarm di ponsel sebelum mulai bermain, dan berhenti segera setelah pertandingan selesai saat alarm berbunyi.</p>
+                    </div>
+                </div>
+
+                <!-- Jurus 2 -->
+                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-indigo-600 text-white font-extrabold flex items-center justify-center shrink-0 shadow-sm">2</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Prioritas Tugas Utama ("Kewajiban Dulu, Game Kemudian")</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">Selesaikan seluruh kewajiban sekolah (PR, merapikan buku, belajar) serta ibadah dan tugas rumah terlebih dahulu. Jadikan waktu bermain game sebagai hadiah (<em>reward</em>) setelah tugas tuntas.</p>
+                    </div>
+                </div>
+
+                <!-- Jurus 3 -->
+                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-indigo-600 text-white font-extrabold flex items-center justify-center shrink-0 shadow-sm">3</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Digital Detox Sebelum Tidur</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">Hentikan seluruh aktivitas bermain game minimal <strong>1 jam sebelum jam tidur</strong> dan simpan ponsel di luar jangkauan tempat tidur agar kualitas tidurmu nyenyak dan segar saat bangun pagi.</p>
+                    </div>
+                </div>
+
+                <!-- Jurus 4 -->
+                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-indigo-600 text-white font-extrabold flex items-center justify-center shrink-0 shadow-sm">4</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Alihkan ke Aktivitas Fisik & Hobi Nyata</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">Salurkan energi dan kebutuhan berprestasi melalui olahraga (futsal, basket, bulu tangkis, bersepeda), ekstrakurikuler sekolah, bermusik, atau mengobrol santai bersama keluarga.</p>
+                    </div>
+                </div>
+
+                <!-- Jurus 5 -->
+                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-indigo-600 text-white font-extrabold flex items-center justify-center shrink-0 shadow-sm">5</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base">Berani Berkonsultasi dengan Guru BK</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">Jika kamu merasa kesulitan mengurangi durasi bermain sendirian atau sering berkonflik dengan orang tua karena game, jangan ragu datang ke ruang BK untuk berdiskusi bersama <strong>Ibu Nurani, S.Pd.</strong> Ruang BK adalah tempat yang aman dan rahasia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LATIHAN SOAL / KUIS EVALUASI (10 BUTIR PILIHAN GANDA) -->
+        <section id="kuis" class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 print-shadow-none">
+            <div class="border-b border-slate-200 pb-5 mb-6">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span class="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-800 font-bold text-xs uppercase tracking-wider">Evaluasi Layanan BK</span>
+                    <span class="text-xs font-semibold text-slate-500">10 Butir Soal Pilihan Ganda</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800">Latihan Soal: Uji Pemahaman & Kendali Diri</h2>
+                <p class="text-sm text-slate-600 mt-1">
+                    Isilah identitas dirimu terlebih dahulu, kerjakan ke-10 butir soal berikut dengan cermat, lalu tekan tombol <strong>"Periksa Jawaban & Lihat Skor"</strong>.
+                </p>
+
+                <!-- Form Identitas Siswa -->
+                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
+                    <div>
+                        <label for="studentName" class="block text-xs font-bold text-indigo-950 mb-1">Nama Lengkap Peserta Didik <span class="text-rose-500">*</span></label>
+                        <input type="text" id="studentName" placeholder="Masukkan nama lengkapmu..." class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="studentClass" class="block text-xs font-bold text-indigo-950 mb-1">Kelas <span class="text-rose-500">*</span></label>
+                        <input type="text" id="studentClass" placeholder="Contoh: VIII-B" class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kotak Peringatan Validasi (Menggantikan alert) -->
+            <div id="quizAlertBox" class="hidden mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-300 text-amber-950 text-sm flex items-start justify-between gap-3 no-print">
+                <div class="flex items-start gap-2.5">
+                    <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <span id="quizAlertText" class="font-medium">Masih ada soal yang belum dijawab.</span>
+                </div>
+                <button onclick="hideQuizAlert()" class="text-amber-800 hover:text-amber-950 font-bold text-xs px-2 py-1 rounded bg-amber-200/60 shrink-0 cursor-pointer">Tutup</button>
+            </div>
+
+            <!-- Kartu Hasil Akhir Kuis (Nama, Kelas, Skor 0-100, Jumlah Benar/Salah, Predikat Evaluasi) -->
+            <div id="quizResultBanner" class="hidden mb-8 rounded-2xl p-6 bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white shadow-lg print-bg-light print-shadow-none">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-white/15 pb-5 mb-5 print:border-slate-300">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/15 text-teal-200 text-xs font-bold uppercase tracking-wider mb-2 print:bg-teal-100 print:text-teal-800">
+                            Kartu Hasil Evaluasi Layanan BK
+                        </span>
+                        <h3 id="resultStudentIdentity" class="text-xl sm:text-2xl font-extrabold">
+                            Peserta Didik • Kelas -
+                        </h3>
+                        <p id="resultPredicateBadge" class="mt-1.5 inline-flex items-center gap-1.5 text-sm font-bold text-amber-300 print:text-indigo-700">
+                            Predikat: Sangat Baik (Kompeten)
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <div class="bg-white/15 backdrop-blur-sm rounded-2xl px-5 py-3 text-center border border-white/20 print-bg-light">
+                            <span class="block text-xs text-teal-100 uppercase font-semibold print:text-slate-500">Skor Akhir</span>
+                            <span id="scoreHeadline" class="text-3xl font-extrabold">100</span>
+                            <span class="text-xs text-teal-200 block print:text-slate-500">Skala 0–100</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 text-center border border-white/15 print-bg-light">
+                            <span class="block text-xs text-teal-100 font-semibold print:text-slate-500">Rincian</span>
+                            <span id="correctCountBadge" class="block text-sm font-bold text-teal-300 mt-1 print:text-teal-700">Benar: 10</span>
+                            <span id="wrongCountBadge" class="block text-sm font-bold text-rose-300 print:text-rose-700">Salah: 0</span>
+                        </div>
+                    </div>
+                </div>
+                <p id="scoreFeedbackMessage" class="text-sm text-indigo-100 leading-relaxed print:text-slate-700">
+                    Luar biasa! Pemahamanmu tentang manajemen diri dalam bermain game online sangat baik.
+                </p>
+            </div>
+
+            <!-- Wadah Daftar 10 Soal -->
+            <div id="quizQuestionsContainer" class="space-y-6">
+                <!-- Soal dirender secara dinamis lewat JavaScript -->
+            </div>
+
+            <!-- Tombol Aksi Kuis -->
+            <div class="mt-8 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 no-print">
+                <div class="flex flex-wrap items-center gap-3">
+                    <button id="btnSubmitQuiz" onclick="evaluateQuiz()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-600 hover:from-indigo-700 hover:to-teal-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition cursor-pointer flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Periksa Jawaban & Lihat Skor</span>
+                    </button>
+
+                    <button id="btnResetQuiz" onclick="resetQuiz()" class="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition cursor-pointer flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        <span>Reset Latihan</span>
+                    </button>
+                </div>
+
+                <button onclick="window.print()" class="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition cursor-pointer flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                    </svg>
+                    <span>Cetak / Simpan PDF</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Modul BK -->
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-12 print-bg-light print:border-t print:border-slate-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-2">
+            <p class="text-white font-bold text-sm sm:text-base print:text-slate-800">
+                Layanan Bimbingan dan Konseling (BK) • Jenjang Sekolah Menengah Pertama
+            </p>
+            <p class="text-xs sm:text-sm">
+                Disusun oleh <span class="text-teal-400 font-semibold print:text-teal-700">Nurani, S.Pd.</span> — Guru Bimbingan dan Konseling
+            </p>
+            <p class="text-xs text-slate-500 pt-2">
+                "Kendalikan waktumu hari ini, raih prestasi terbaikmu di masa depan."
+            </p>
+        </div>
+    </footer>
+
+    <!-- LOGIKA INTERAKTIF JAVASCRIPT -->
+    <script>
+        // =========================================================================
+        // 1. DATA & LOGIKA SELF-CHECK (6 INDIKATOR KRITERIA WHO + 3 KATEGORI)
+        // =========================================================================
+        const selfCheckItems = [
+            {
+                id: "sc1",
+                title: "1. Hilangnya Kendali Atas Durasi Bermain",
+                desc: "Saya sering bermain jauh lebih lama dari rencana awal (misalnya niat bermain 30 menit, tetapi berlanjut hingga 3–4 jam tanpa sadar)."
+            },
+            {
+                id: "sc2",
+                title: "2. Game Menggeser Prioritas Kewajiban Utama",
+                desc: "Saya lebih mendahulukan bermain game daripada mengerjakan PR, belajar, beribadah, makan tepat waktu, atau istirahat tidur."
+            },
+            {
+                id: "sc3",
+                title: "3. Tetap Bermain Meski Sudah Ada Dampak Negatif",
+                desc: "Walaupun nilai ulangan turun, mata terasa lelah/perih, atau sering ditegur orang tua, saya tetap sulit menghentikan kebiasaan bermain."
+            },
+            {
+                id: "sc4",
+                title: "4. Gelisah atau Mudah Marah Saat Tidak Bermain",
+                desc: "Saya merasa gelisah, bosan berlebihan, atau mudah marah ketika dilarang bermain atau saat jaringan internet terputus."
+            },
+            {
+                id: "sc5",
+                title: "5. Kehilangan Minat pada Aktivitas & Hobi Dunia Nyata",
+                desc: "Kegiatan di luar layar seperti olahraga, mengobrol bersama keluarga, atau berkumpul dengan teman terasa tidak lagi menyenangkan."
+            },
+            {
+                id: "sc6",
+                title: "6. Menyembunyikan Waktu atau Pengeluaran Game",
+                desc: "Saya pernah diam-diam bermain game hingga larut malam atau berbohong mengenai uang jajan yang dipakai untuk membeli item/voucher game."
+            }
+        ];
+
+        const checkedSet = new Set();
+
+        function renderSelfCheck() {
+            const container = document.getElementById("selfCheckContainer");
+            container.innerHTML = selfCheckItems.map((item) => {
+                const isChecked = checkedSet.has(item.id);
+                return `
+                    <div onclick="toggleSelfCheck('${item.id}')" 
+                         class="cursor-pointer select-none p-4 rounded-2xl border transition-all flex items-start gap-3.5 ${
+                             isChecked 
+                             ? 'bg-indigo-600/5 border-indigo-500 shadow-sm' 
+                             : 'bg-white border-slate-200 hover:border-indigo-300'
+                         }">
+                        <div class="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 border transition-colors ${
+                            isChecked 
+                            ? 'bg-indigo-600 border-indigo-600 text-white' 
+                            : 'bg-slate-50 border-slate-300 text-transparent'
+                        }">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm sm:text-base ${isChecked ? 'text-indigo-950' : 'text-slate-800'}">${item.title}</h4>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-0.5 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function toggleSelfCheck(id) {
+            if (checkedSet.has(id)) {
+                checkedSet.delete(id);
+            } else {
+                checkedSet.add(id);
+            }
+            renderSelfCheck();
+            updateSelfCheckFeedback();
+        }
+
+        function updateSelfCheckFeedback() {
+            const count = checkedSet.size;
+            const box = document.getElementById("selfCheckFeedback");
+            const icon = document.getElementById("feedbackIcon");
+            const badge = document.getElementById("feedbackCategoryBadge");
+            const title = document.getElementById("feedbackTitle");
+            const desc = document.getElementById("feedbackDesc");
+            const scoreBadge = document.getElementById("selfCheckScoreBadge");
+
+            scoreBadge.textContent = `${count} / 6`;
+
+            if (count <= 1) {
+                // Kategori 1: Aman & Terkendali (0 - 1 indikator)
+                box.className = "rounded-2xl p-5 sm:p-6 bg-white border-2 border-teal-400 shadow-sm transition-all";
+                icon.className = "w-11 h-11 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0";
+                icon.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+                badge.className = "inline-block text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 mb-1";
+                badge.textContent = "Kategori: Aman & Terkendali";
+                scoreBadge.className = "text-xl font-extrabold text-teal-700";
+                title.textContent = "Kendali Dirimu Sangat Baik!";
+                desc.textContent = "Kamu mampu menempatkan game sebagai hiburan semata tanpa mengorbankan kesehatan, tugas sekolah, maupun hubungan dengan keluarga. Pertahankan keseimbangan positif ini!";
+            } else if (count <= 3) {
+                // Kategori 2: Waspada / Perlu Pengaturan Ulang (2 - 3 indikator)
+                box.className = "rounded-2xl p-5 sm:p-6 bg-amber-50/70 border-2 border-amber-400 shadow-sm transition-all";
+                icon.className = "w-11 h-11 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0";
+                icon.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`;
+                badge.className = "inline-block text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-amber-200/80 text-amber-900 mb-1";
+                badge.textContent = "Kategori: Waspada / Perlu Pengaturan Ulang";
+                scoreBadge.className = "text-xl font-extrabold text-amber-700";
+                title.textContent = "Mulai Ada Tanda Ketidakseimbangan Waktu";
+                desc.textContent = "Kebiasaan bermainmu mulai menggeser beberapa rutinitas penting. Segera terapkan Jurus 1 (Time-Boxing) dan Jurus 2 (Prioritas Tugas Utama) pada Bagian 05 mulai hari ini agar tidak berkembang menjadi kecanduan.";
+            } else {
+                // Kategori 3: Butuh Pendampingan Konseling (4 - 6 indikator)
+                box.className = "rounded-2xl p-5 sm:p-6 bg-rose-50/80 border-2 border-rose-400 shadow-sm transition-all";
+                icon.className = "w-11 h-11 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0";
+                icon.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`;
+                badge.className = "inline-block text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-rose-200/80 text-rose-900 mb-1";
+                badge.textContent = "Kategori: Butuh Pendampingan Konseling";
+                scoreBadge.className = "text-xl font-extrabold text-rose-700";
+                title.textContent = "Perlu Dukungan & Pendampingan Segera";
+                desc.textContent = "Sebagian besar indikator ketergantungan game dialami olehmu. Jangan dipendam sendirian—ayo ceritakan kondisimu kepada orang tua atau temui Ibu Nurani, S.Pd. di ruang BK untuk menyusun rencana pemulihan bersama.";
+            }
+        }
+
+        // =========================================================================
+        // 2. DATA & LOGIKA 10 BUTIR SOAL PILIHAN GANDA
+        // =========================================================================
+        const quizData = [
+            {
+                number: 1,
+                question: "Secara psikologis, alasan utama otak remaja merasa sangat senang dan terdorong untuk terus bermain saat berhasil naik level atau memenangkan pertandingan adalah...",
+                options: [
+                    "Cahaya biru pada layar gawai merangsang saraf mata agar tidak mudah mengantuk",
+                    "Otak melepaskan hormon dopamin yang menciptakan rasa senang dan kepuasan instan",
+                    "Bermain game dapat menggantikan kebutuhan interaksi sosial di dunia nyata sepenuhnya",
+                    "Permainan daring meningkatkan daya ingat jangka panjang untuk semua mata pelajaran"
+                ],
+                correctIndex: 1,
+                explanation: "Kemenangan, poin, dan hadiah dalam game memicu sistem penghargaan di otak untuk melepaskan dopamin, hormon yang menimbulkan rasa senang dan dorongan mengulang aktivitas tersebut."
+            },
+            {
+                number: 2,
+                question: "Fajar bermain game strategi selama 60 menit pada Sabtu sore setelah seluruh tugas sekolahnya tuntas. Sisi positif yang dapat diperoleh Fajar dari kegiatan tersebut adalah...",
+                options: [
+                    "Terhindar dari kewajiban membantu pekerjaan rumah tangga bersama keluarga",
+                    "Melatih kemampuan pemecahan masalah, koordinasi mata-tangan, dan kerja sama tim",
+                    "Membuat mata menjadi lebih kuat saat menatap layar komputer dalam waktu lama",
+                    "Menjamin nilai ulangan harian meningkat secara otomatis tanpa perlu belajar"
+                ],
+                correctIndex: 1,
+                explanation: "Jika dimainkan secara proporsional setelah kewajiban selesai, game dapat melatih strategi pemecahan masalah, refleks koordinasi mata-tangan, serta kerja sama tim."
+            },
+            {
+                number: 3,
+                question: "Nadia sering bermain game online hingga pukul 02.00 dini hari demi mengejar peringkat. Keesokan harinya ia tertidur di kelas dan nilai ulangannya menurun drastis. Kasus Nadia menunjukkan dampak negatif pada aspek...",
+                options: [
+                    "Fisik & kesehatan (gangguan tidur) serta akademik & prestasi belajar",
+                    "Kreativitas seni rupa dan kemampuan berbahasa asing",
+                    "Kemandirian ekonomi dan keterampilan berorganisasi",
+                    "Ketahanan fisik dan kecepatan refleks motorik"
+                ],
+                correctIndex: 0,
+                explanation: "Begadang merusak pola tidur dan kesehatan tubuh (dampak fisik), sekaligus menurunkan konsentrasi dan nilai sekolah (dampak akademik)."
+            },
+            {
+                number: 4,
+                question: "Saat mengalami kekalahan beruntun, Dimas berteriak kasar kepada rekan setimnya melalui voice chat dan membanting ponselnya ke meja. Perilaku Dimas mencerminkan gangguan pada aspek...",
+                options: [
+                    "Koordinasi sensorik dan motorik",
+                    "Emosional dan pengendalian perilaku",
+                    "Kemampuan analisis strategi tim",
+                    "Kebugaran jasmani dan pola makan"
+                ],
+                correctIndex: 1,
+                explanation: "Ledakan amarah (rage) saat kalah serta kebiasaan berkata kasar (toxic) merupakan tanda terganggunya regulasi emosi dan kontrol perilaku."
+            },
+            {
+                number: 5,
+                question: "Berdasarkan kriteria WHO (ICD-11), salah satu indikator utama seseorang mengalami kecanduan game online adalah...",
+                options: [
+                    "Mengikuti kompetisi e-sports resmi yang diselenggarakan oleh sekolah",
+                    "Menjadikan game sebagai prioritas utama di atas kewajiban harian meski sudah menimbulkan dampak buruk",
+                    "Membahas strategi permainan bersama teman saat jam istirahat sekolah",
+                    "Memiliki lebih dari satu aplikasi permainan di dalam ponsel pribadinya"
+                ],
+                correctIndex: 1,
+                explanation: "WHO menekankan hilangnya kendali sehingga game menggeser prioritas hidup penting (belajar, tidur, makan, keluarga) meskipun dampak negatifnya sudah nyata."
+            },
+            {
+                number: 6,
+                question: "Malam ini kamu harus mempersiapkan diri untuk ujian tengah semester esok pagi. Tiba-tiba sahabatmu mengajak 'mabar' karena tim mereka kekurangan satu anggota. Sikap asertif yang paling bijak adalah...",
+                options: [
+                    "Tetap ikut mabar hingga larut malam demi menjaga solidaritas pertemanan",
+                    "Memarahi sahabat tersebut karena dianggap tidak peduli dengan nilai ujianmu",
+                    "Menolak dengan sopan sambil menjelaskan bahwa kamu harus belajar untuk ujian besok",
+                    "Mematikan ponsel secara sepihak lalu berbohong keesokan harinya bahwa kuotamu habis"
+                ],
+                correctIndex: 2,
+                explanation: "Komunikasi asertif berarti berani berkata tidak secara jujur, tegas, dan santun untuk melindungi prioritas belajar tanpa merusak hubungan pertemanan."
+            },
+            {
+                number: 7,
+                question: "Penerapan jurus 'Time-Boxing' dalam mengendalikan kebiasaan bermain game online dilakukan dengan cara...",
+                options: [
+                    "Menyimpan ponsel di dalam kotak terkunci selama satu semester penuh",
+                    "Menetapkan batas durasi bermain yang jelas (misalnya 60–90 menit) menggunakan alarm sebelum mulai bermain",
+                    "Bermain game terus-menerus di akhir pekan untuk menebus waktu hari sekolah",
+                    "Mengganti jenis game setiap 30 menit agar tidak merasa bosan"
+                ],
+                correctIndex: 1,
+                explanation: "Time-boxing adalah teknik manajemen waktu dengan mengalokasikan blok waktu tertentu yang tegas (dibantu alarm) sehingga durasi bermain tetap terkendali."
+            },
+            {
+                number: 8,
+                question: "Mengapa remaja dianjurkan melakukan 'Digital Detox Sebelum Tidur' dengan menghentikan aktivitas game minimal 1 jam sebelum beristirahat malam?",
+                options: [
+                    "Agar baterai ponsel tetap penuh saat dibawa ke sekolah keesokan harinya",
+                    "Karena stimulasi layar dan ketegangan permainan menghambat otak untuk rileks dan tidur nyenyak",
+                    "Supaya kuota internet tidak habis terpakai pada tengah malam",
+                    "Karena server game online selalu ditutup pada malam hari"
+                ],
+                correctIndex: 1,
+                explanation: "Cahaya layar gawai dan adrenalin dari permainan membuat otak tetap terjaga sehingga menurunkan kualitas tidur malam remaja."
+            },
+            {
+                number: 9,
+                question: "Rani merasa mulai kecanduan game dan sering bosan jika tidak memegang ponsel. Mengikuti kegiatan ekstrakurikuler olahraga atau seni di sekolah dapat membantu Rani karena...",
+                options: [
+                    "Membuatnya kelelahan fisik sehingga tidak sempat mengerjakan PR",
+                    "Mengalihkan kebutuhan akan tantangan, pencapaian, dan sosialisasi ke aktivitas nyata yang sehat",
+                    "Membantunya mencari lawan main baru untuk diajak mabar di rumah",
+                    "Menghapus kewajiban belajar di rumah secara otomatis"
+                ],
+                correctIndex: 1,
+                explanation: "Aktivitas fisik dan hobi nyata memberikan pelepasan dopamin alami, membangun pertemanan tatap muka, dan memenuhi rasa pencapaian secara sehat."
+            },
+            {
+                number: 10,
+                question: "Apabila hasil Self-Check menunjukkan kamu berada pada kategori 'Butuh Pendampingan Konseling' dan kamu kesulitan mengatasinya sendiri, langkah paling bijak yang dapat dilakukan di sekolah adalah...",
+                options: [
+                    "Menyembunyikan hasil tersebut agar tidak diketahui siapa pun",
+                    "Menghapus semua akun media sosial tetapi tetap begadang bermain game",
+                    "Menemui Guru BK (Ibu Nurani, S.Pd.) untuk berkonsultasi secara terbuka dan menyusun solusi bersama",
+                    "Menyalahkan teman sebaya yang pertama kali memperkenalkan game tersebut"
+                ],
+                correctIndex: 2,
+                explanation: "Berkonsultasi dengan Guru BK adalah langkah dewasa dan tepat karena layanan BK bersifat rahasia, empatik, dan membantu siswa menemukan strategi perubahan perilaku."
+            }
+        ];
+
+        let userAnswers = {};
+        let isQuizSubmitted = false;
+
+        function renderQuiz(highlightUnanswered = false) {
+            const container = document.getElementById("quizQuestionsContainer");
+            const optionLetters = ["A", "B", "C", "D"];
+
+            container.innerHTML = quizData.map((q, qIndex) => {
+                const selectedOption = userAnswers[qIndex];
+                const isUnanswered = selectedOption === undefined;
+                const isCorrect = selectedOption === q.correctIndex;
+
+                let cardBorderClass = "border-slate-200 bg-slate-50/40";
+                if (isQuizSubmitted) {
+                    cardBorderClass = isCorrect 
+                        ? "border-teal-400 bg-teal-50/30" 
+                        : "border-rose-400 bg-rose-50/30";
+                } else if (highlightUnanswered && isUnanswered) {
+                    cardBorderClass = "unanswered-highlight";
+                }
+
+                const optionsHTML = q.options.map((optText, oIndex) => {
+                    const isSelected = selectedOption === oIndex;
+                    const isRightAnswer = q.correctIndex === oIndex;
+
+                    let optStyle = "bg-white border-slate-200 hover:border-indigo-400 text-slate-700";
+                    let badgeStyle = "bg-slate-100 text-slate-600";
+                    let statusIcon = "";
+
+                    if (!isQuizSubmitted) {
+                        if (isSelected) {
+                            optStyle = "bg-indigo-50 border-indigo-600 text-indigo-950 font-medium ring-1 ring-indigo-600";
+                            badgeStyle = "bg-indigo-600 text-white";
+                        }
+                    } else {
+                        if (isRightAnswer) {
+                            optStyle = "bg-teal-100/85 border-teal-600 text-teal-950 font-semibold";
+                            badgeStyle = "bg-teal-600 text-white";
+                            statusIcon = `<span class="ml-auto text-xs font-bold text-teal-800 bg-white px-2.5 py-0.5 rounded-md border border-teal-300 shrink-0">✓ Jawaban Benar</span>`;
+                        } else if (isSelected && !isRightAnswer) {
+                            optStyle = "bg-rose-100/85 border-rose-500 text-rose-950 font-medium";
+                            badgeStyle = "bg-rose-600 text-white";
+                            statusIcon = `<span class="ml-auto text-xs font-bold text-rose-800 bg-white px-2.5 py-0.5 rounded-md border border-rose-300 shrink-0">✕ Jawabanmu</span>`;
+                        } else {
+                            optStyle = "bg-white/70 border-slate-200 text-slate-500 opacity-80";
+                        }
+                    }
+
+                    return `
+                        <div onclick="selectOption(${qIndex}, ${oIndex})" 
+                             class="p-3.5 rounded-xl border transition-all flex items-center gap-3 ${isQuizSubmitted ? 'cursor-default' : 'cursor-pointer'} ${optStyle}">
+                            <span class="w-7 h-7 rounded-lg text-xs font-bold flex items-center justify-center shrink-0 transition-colors ${badgeStyle}">
+                                ${optionLetters[oIndex]}
+                            </span>
+                            <span class="text-sm leading-snug">${optText}</span>
+                            ${statusIcon}
+                        </div>
+                    `;
+                }).join("");
+
+                const explanationHTML = isQuizSubmitted ? `
+                    <div class="mt-4 p-4 rounded-xl text-sm leading-relaxed border ${
+                        isCorrect 
+                        ? 'bg-teal-50 border-teal-200 text-teal-950' 
+                        : 'bg-amber-50 border-amber-200 text-amber-950'
+                    }">
+                        <div class="font-bold mb-1 flex items-center gap-1.5">
+                            <span>${isCorrect ? '✓ Tepat Sekali! Pembahasan:' : '💡 Pembahasan Edukatif:'}</span>
+                        </div>
+                        <p>${q.explanation}</p>
+                    </div>
+                ` : '';
+
+                const unansweredBadge = (!isQuizSubmitted && highlightUnanswered && isUnanswered) ? `
+                    <span class="ml-auto text-xs font-bold text-amber-800 bg-amber-200/80 px-2.5 py-0.5 rounded-md shrink-0">Belum Dijawab</span>
+                ` : '';
+
+                return `
+                    <div id="question-card-${qIndex}" class="p-5 sm:p-6 rounded-2xl border transition-all print-break-inside-avoid ${cardBorderClass}">
+                        <div class="flex items-start gap-3 mb-4">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-white text-xs font-bold shrink-0 mt-0.5">
+                                No. ${q.number}
+                            </span>
+                            <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-relaxed">
+                                ${q.question}
+                            </h3>
+                            ${unansweredBadge}
+                        </div>
+
+                        <div class="space-y-2.5">
+                            ${optionsHTML}
+                        </div>
+
+                        ${explanationHTML}
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function selectOption(qIndex, oIndex) {
+            if (isQuizSubmitted) return;
+            userAnswers[qIndex] = oIndex;
+            hideQuizAlert();
+            renderQuiz(false);
+        }
+
+        function showQuizAlert(message) {
+            const alertBox = document.getElementById("quizAlertBox");
+            const alertText = document.getElementById("quizAlertText");
+            alertText.textContent = message;
+            alertBox.classList.remove("hidden");
+        }
+
+        function hideQuizAlert() {
+            document.getElementById("quizAlertBox").classList.add("hidden");
+        }
+
+        function evaluateQuiz() {
+            const nameInput = document.getElementById("studentName").value.trim();
+            const classInput = document.getElementById("studentClass").value.trim();
+
+            if (!nameInput || !classInput) {
+                showQuizAlert("Mohon isi Nama Lengkap dan Kelas kamu terlebih dahulu pada kolom identitas di atas sebelum memeriksa jawaban.");
+                document.getElementById("studentName").focus();
+                return;
+            }
+
+            const totalQuestions = quizData.length;
+            const missingNumbers = [];
+            let firstMissingIndex = -1;
+
+            for (let i = 0; i < totalQuestions; i++) {
+                if (userAnswers[i] === undefined) {
+                    missingNumbers.push(i + 1);
+                    if (firstMissingIndex === -1) firstMissingIndex = i;
+                }
+            }
+
+            if (missingNumbers.length > 0) {
+                renderQuiz(true);
+                showQuizAlert(`Masih ada ${missingNumbers.length} soal yang belum dijawab (Nomor: ${missingNumbers.join(", ")}). Silakan lengkapi soal yang disorot berwarna kuning.`);
+                const targetEl = document.getElementById(`question-card-${firstMissingIndex}`);
+                if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                return;
+            }
+
+            let correctCount = 0;
+            quizData.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correctIndex) {
+                    correctCount++;
+                }
+            });
+
+            const wrongCount = totalQuestions - correctCount;
+            const score = correctCount * 10;
+            isQuizSubmitted = true;
+            hideQuizAlert();
+
+            // Menentukan Predikat Evaluasi
+            let predicate = "";
+            let feedbackMsg = "";
+            if (score >= 90) {
+                predicate = "Predikat: Sangat Baik (Penguasaan Mandiri)";
+                feedbackMsg = "Luar biasa! Kamu sangat memahami konsep psikologis, dampak, serta strategi mengendalikan diri dalam bermain game online. Terapkan ilmu ini dalam keseharianmu!";
+            } else if (score >= 75) {
+                predicate = "Predikat: Baik (Tuntas)";
+                feedbackMsg = "Bagus sekali! Pemahamanmu sudah baik. Cermati kembali pembahasan pada butir soal yang masih keliru untuk memperkuat pemahamanmu.";
+            } else if (score >= 60) {
+                predicate = "Predikat: Cukup (Perlu Penguatan)";
+                feedbackMsg = "Cukup baik, namun masih ada beberapa konsep kendali diri yang perlu diperdalam. Yuk, baca kembali Bagian 01–05 dan pahami pembahasannya.";
+            } else {
+                predicate = "Predikat: Perlu Bimbingan Lanjutan";
+                feedbackMsg = "Jangan berkecil hati! Silakan pelajari kembali materi layanan dari awal dengan saksama, lalu coba ulangi latihan soal ini untuk menguji pemahamanmu.";
+            }
+
+            document.getElementById("resultStudentIdentity").textContent = `${nameInput} • Kelas ${classInput}`;
+            document.getElementById("resultPredicateBadge").textContent = predicate;
+            document.getElementById("scoreHeadline").textContent = score;
+            document.getElementById("correctCountBadge").textContent = `Benar: ${correctCount}`;
+            document.getElementById("wrongCountBadge").textContent = `Salah: ${wrongCount}`;
+            document.getElementById("scoreFeedbackMessage").textContent = feedbackMsg;
+
+            const resultBanner = document.getElementById("quizResultBanner");
+            resultBanner.classList.remove("hidden");
+            renderQuiz(false);
+
+            resultBanner.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            isQuizSubmitted = false;
+            hideQuizAlert();
+            document.getElementById("quizResultBanner").classList.add("hidden");
+            renderQuiz(false);
+
+            const kuisSection = document.getElementById("kuis");
+            kuisSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Inisialisasi tampilan saat halaman selesai dimuat
+        window.addEventListener("DOMContentLoaded", () => {
+            renderSelfCheck();
+            updateSelfCheckFeedback();
+            renderQuiz(false);
+        });
+    </script>
+</body>
+</html>
